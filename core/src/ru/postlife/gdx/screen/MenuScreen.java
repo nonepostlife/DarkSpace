@@ -22,7 +22,6 @@ public class MenuScreen extends BaseScreen {
     public void show() {
         super.show();
         img = new Texture("figure.png");
-        background = new Texture("background_space_small.jpg");
         objectPosition = new Vector2(0, 0);
         objectDestination = new Vector2();
         n = new Vector2();
@@ -48,7 +47,6 @@ public class MenuScreen extends BaseScreen {
     public void dispose() {
         super.dispose();
         img.dispose();
-        background.dispose();
     }
 
     @Override

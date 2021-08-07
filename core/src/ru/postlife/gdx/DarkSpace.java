@@ -7,6 +7,6 @@ import ru.postlife.gdx.screen.MenuScreen;
 public class DarkSpace extends Game {
     @Override
     public void create() {
-        setScreen(new MenuScreen());
+        setScreen(new MenuScreen(this));
     }
 }

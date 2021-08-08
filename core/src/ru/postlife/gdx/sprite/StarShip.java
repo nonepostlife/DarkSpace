@@ -42,10 +42,10 @@ public class StarShip extends Sprite {
             pos.add(v.x, v.y);
         }
         if (touched) {
-            if (touch.x > getHalfWidth() && getRight() < worldBounds.getRight() - PADDING) {
+            if (touch.x > 0.0f && getRight() < worldBounds.getRight() - PADDING) {
                 pos.add(v.x, v.y);
             }
-            if (touch.x < getHalfWidth() && getLeft() > worldBounds.getLeft() + PADDING) {
+            if (touch.x < 0.0f && getLeft() > worldBounds.getLeft() + PADDING) {
                 pos.add(-v.x, v.y);
             }
         }

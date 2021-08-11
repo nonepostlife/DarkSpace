@@ -9,7 +9,6 @@ import ru.postlife.gdx.base.BaseScreen;
 import ru.postlife.gdx.math.Rect;
 import ru.postlife.gdx.sprite.Background;
 import ru.postlife.gdx.sprite.ExitButton;
-import ru.postlife.gdx.sprite.Logo;
 import ru.postlife.gdx.sprite.PlayButton;
 import ru.postlife.gdx.sprite.Star;
 
@@ -20,9 +19,7 @@ public class MenuScreen extends BaseScreen {
     private final Game game;
 
     private Texture bg;
-    private Texture textureLogo;
     private Background background;
-    private Logo logo;
 
     private TextureAtlas atlas;
 

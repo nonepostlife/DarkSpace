@@ -1,6 +1,8 @@
 package ru.postlife.gdx.sprite;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -10,10 +12,14 @@ import ru.postlife.gdx.math.Rect;
 import ru.postlife.gdx.pool.BulletPool;
 
 public class MainShip extends Sprite {
+    Sound soundShoot = Gdx.audio.newSound(Gdx.files.internal("sounds/bullet.wav"));
 
     private static final float HEIGHT = 0.15f;
     private static final float BOTTOM_MARGIN = 0.05f;
     private static final int INVALID_POINTER = -1;
+    private static final float PERIOD = 0.25f;
+
+    private float timeSeconds = 0.0f;
 
     private final Vector2 v0 = new Vector2(0.5f, 0);
     private final Vector2 v = new Vector2();
@@ -61,6 +67,13 @@ public class MainShip extends Sprite {
         if (getRight() < worldBounds.getLeft()) {
             setLeft(worldBounds.getRight());
         }
+
+        timeSeconds += delta;
+        if(timeSeconds > PERIOD){
+            timeSeconds -= PERIOD;
+            shoot();
+        }
+
     }
 
     @Override
@@ -168,5 +181,10 @@ public class MainShip extends Sprite {
         Bullet bullet = bulletPool.obtain();
         bulletPos.set(pos.x, pos.y + getHalfHeight());
         bullet.set(this, bulletRegion, bulletPos, bulletV, bulletHeight, worldBounds, bulletDamage);
+        soundShoot.play(0.1f);
+    }
+
+    public void dispose() {
+        soundShoot.dispose();
     }
 }

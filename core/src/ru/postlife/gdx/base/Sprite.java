@@ -34,6 +34,10 @@ public class Sprite extends Rect {
         setWidth(height * aspect);
     }
 
+    public void update(float delta) {
+
+    }
+
     public void draw(SpriteBatch batch) {
         batch.draw(
                 regions[frame],
@@ -45,10 +49,8 @@ public class Sprite extends Rect {
         );
     }
 
-    public void update(float delta) {
-    }
-
     public void resize(Rect worldBounds) {
+
     }
 
     public boolean touchDown(Vector2 touch, int pointer, int button) {
@@ -59,7 +61,7 @@ public class Sprite extends Rect {
         return false;
     }
 
-    public boolean touchDragged(Vector2 touch, int pointer) {
+    public boolean touchDragged(Vector2 touch, int pointer, int button) {
         return false;
     }
 

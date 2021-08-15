@@ -1,5 +1,7 @@
 package ru.postlife.gdx.screen;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
@@ -12,6 +14,7 @@ import ru.postlife.gdx.sprite.MainShip;
 import ru.postlife.gdx.sprite.Star;
 
 public class GameScreen extends BaseScreen {
+    Music music = Gdx.audio.newMusic(Gdx.files.internal("sounds/music.mp3"));
 
     private static final int STAR_COUNT = 64;
 
@@ -37,6 +40,9 @@ public class GameScreen extends BaseScreen {
         }
         bulletPool = new BulletPool();
         mainShip = new MainShip(atlas, bulletPool);
+
+        music.setLooping(true);
+        music.play();
     }
 
     @Override
@@ -63,6 +69,8 @@ public class GameScreen extends BaseScreen {
         bg.dispose();
         atlas.dispose();
         bulletPool.dispose();
+        mainShip.dispose();
+        music.dispose();
     }
 
     @Override

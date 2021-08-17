@@ -67,4 +67,9 @@ public abstract class SpritesPool<T extends Sprite> {
         return activeSprites;
     }
 
+    public void destroyAllActiveSprite(){
+        for (Sprite sprite : activeSprites){
+            sprite.destroy();
+        }
+    }
 }

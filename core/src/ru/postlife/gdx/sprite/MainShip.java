@@ -59,6 +59,10 @@ public class MainShip extends Ship {
         setBottom(worldBounds.getBottom() + BOTTOM_MARGIN);
     }
 
+    public void setStartPos() {
+        pos.x = 0.0f;
+    }
+
     @Override
     public boolean touchDown(Vector2 touch, int pointer, int button) {
         if (touch.x < worldBounds.pos.x) {

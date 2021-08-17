@@ -55,4 +55,8 @@ public class EnemyShip extends Ship {
         v.set(0, -0.4f);
         bulletPos.set(pos.x, pos.y + getHalfHeight());
     }
+
+    public void hit(float damage) {
+        hp -= damage;
+    }
 }

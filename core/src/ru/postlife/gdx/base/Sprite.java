@@ -92,4 +92,19 @@ public class Sprite extends Rect {
     public boolean isDestroyed() {
         return destroyed;
     }
+
+    public boolean isSpriteCollision(Sprite other) {
+        float dst = pos.dst(other.pos);
+        float[] arrDst = new float[4];
+        arrDst[0] = getHalfWidth() + other.getHalfHeight();
+        arrDst[1] = getHalfWidth() + other.getHalfWidth();
+        arrDst[2] = getHalfHeight() + other.getHalfHeight();
+        arrDst[3] = getHalfHeight() + other.getHalfWidth();
+        float min = arrDst[0];
+        for (float value : arrDst) {
+            if (min > value)
+                min = value;
+        }
+        return dst < min;
+    }
 }

@@ -57,4 +57,12 @@ public class Ship extends Sprite {
         bullet.set(this, bulletRegion, bulletPos, bulletV, bulletHeight, worldBounds, bulletDamage);
         bulletSound.play();
     }
+
+    public int getBulletDamage() {
+        return bulletDamage;
+    }
+
+    public int getHp() {
+        return hp;
+    }
 }

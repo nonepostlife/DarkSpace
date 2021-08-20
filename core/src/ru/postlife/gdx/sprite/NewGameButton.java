@@ -23,6 +23,6 @@ public class NewGameButton extends BaseButton {
 
     @Override
     public void action() {
-        gameScreen.restartGame();
+        gameScreen.startNewGame();
     }
 }

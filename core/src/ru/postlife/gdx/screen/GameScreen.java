@@ -3,8 +3,10 @@ package ru.postlife.gdx.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 
@@ -61,6 +63,12 @@ public class GameScreen extends BaseScreen {
     private StringBuilder sbHp;
     private StringBuilder sbLevel;
 
+    private ShapeRenderer shapeRenderer;
+
+    private float hpBarLength;
+    private float hpScale;
+
+
     @Override
     public void show() {
         super.show();
@@ -94,6 +102,10 @@ public class GameScreen extends BaseScreen {
         sbFrags = new StringBuilder();
         sbHp = new StringBuilder();
         sbLevel = new StringBuilder();
+
+        shapeRenderer = new ShapeRenderer();
+        hpScale = 500.0f / mainShip.getHp();
+        hpBarLength = mainShip.getHp() * hpScale;
     }
 
     public void startNewGame() {
@@ -111,6 +123,10 @@ public class GameScreen extends BaseScreen {
         checkCollisions();
         freeAllDestroyed();
         draw();
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Color.GREEN);
+        shapeRenderer.rect(worldBounds.getLeft(), worldBounds.getBottom(), hpBarLength, 5);
+        shapeRenderer.end();
     }
 
     @Override
@@ -182,6 +198,7 @@ public class GameScreen extends BaseScreen {
             enemyPool.updateActiveSprites(delta);
             enemyEmitter.generate(delta, frags);
         }
+        hpBarLength = mainShip.getHp() * hpScale;
     }
 
     private void checkCollisions() {
